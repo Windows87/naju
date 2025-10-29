@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inscrições — Corrida Mamão</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="container hero-inner">
+      <div>
+        <h1>🏃‍♀️ INSCRIÇÕES ABERTAS — Corrida Mamão</h1>
+    </div>
+  </header>
+
+  <section class="featured-image">
+    <div class="container">
+      <img src="https://i.imgur.com/ilDtYHb.png" alt="Corrida Mamão - Evento" />
+    </div>
+  </section>
+
+  <main class="container main-grid">
+    <section class="form-card">
+      <h2>Inscreva-se</h2>
+      <p class="note">🏁 Atenção: isso <strong>não é uma corrida</strong> e nem vai ter mamão!</p>
+
+      <form id="registration" action="#" method="post" novalidate>
+        <label for="name">Nome/Apelido</label>
+        <input id="name" name="name" type="text" required placeholder="Maria da Silva" />
+
+        <div class="checkbox-wrapper">
+          <label for="food">
+            <input id="food" name="food" type="checkbox" />
+            Quero o salgado (R$ 16,99)
+          </label>
+        </div>
+
+        <div id="payment-block" class="payment-block hidden">
+          <p class="muted small">Para confirmar o salgado, efetue o pagamento via PIX para o payload abaixo.</p>
+          <div class="pix-row">
+            <code id="pix-payload">00020126580014BR.GOV.BCB.PIX013677023ca1-f15f-47a0-b46b-c9b410e5b278520400005303986540516.995802BR5925Yuri Donizete Claudino de6009SAO PAULO62140510a7uGBwy2VZ630414B8</code>
+            <button type="button" id="copy-pix" class="btn small">Copiar PIX</button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn">Confirmar presença</button>
+      </form>
+
+      <div id="status-message" class="status-message hidden"></div>
+    </section>
+
+    <aside class="info-card">
+      <h3>Detalhes do evento</h3>
+      <p class="note"><strong>🏃‍♀️ INSCRIÇÕES ABERTAS PARA A CORRIDA MAMÃO! 🍈</strong></p>
+      <p>As inscrições para a Corrida Mamão, evento especial para comemorar a volta rápida da Naju em São Carlos, estão abertas! O kit contém um número de peito e a participação no nosso micro rolê especial da nossa Naju! 💛</p>
+
+      <p class="note">⚠️ Mas atenção: isso <strong>não é uma corrida</strong> e nem vai ter mamão! ⚠️</p>
+
+      <h4>Comidas / Bebidas</h4>
+      <ul>
+        <li>🥐 Salgado TOP</li>
+        <li>🥤 Refri e Suco</li>
+        <li>🎂 Bolo</li>
+      </ul>
+
+      <h4>Atividades</h4>
+      <ul>
+        <li>Bingo da Terceira Idade valendo prêmios 🎁</li>
+        <li>Boxe (mediante aprovação da Naju) 🥊</li>
+        <li>Aguarde... 👀</li>
+      </ul>
+
+      <h4>Detalhes</h4>
+      <ul>
+        <li><strong>Local:</strong> Condomínio Solar dos Engenheiros (Salão de Festas)</li>
+        <li><strong>Data:</strong> 5 de novembro (quarta que vem!)</li>
+        <li><strong>Horário:</strong> 20h30 → 22h00</li>
+        <li><strong>Valor:</strong> R$ 16,99 (só se quiser comer salgado!)</li>
+        <li><strong>Dress Code:</strong> Corrida (opcional, mas recomendado)</li>
+      </ul>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© Corrida Mamão</div>
+  </footer>
+
+  <!-- Modal de confirmação -->
+  <div id="modal" class="modal hidden" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+      <h3 id="modal-title">Inscrição confirmada</h3>
+      <div id="modal-body"></div>
+      <div class="modal-actions">
+        <button id="close-modal" class="btn">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
