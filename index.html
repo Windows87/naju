@@ -37,14 +37,20 @@
         </div>
 
         <div id="payment-block" class="payment-block hidden">
-          <p class="muted small">Para confirmar o salgado, efetue o pagamento via PIX para o payload abaixo.</p>
+          <p class="muted small">Para confirmar o salgado, efetue o pagamento via PIX para o código abaixo.</p>
           <div class="pix-row">
-            <code id="pix-payload">00020126580014BR.GOV.BCB.PIX013677023ca1-f15f-47a0-b46b-c9b410e5b278520400005303986540516.995802BR5925Yuri Donizete Claudino de6009SAO PAULO62140510a7uGBwy2VZ630414B8</code>
+            <code id="pix-payload">00020126580014BR.GOV.BCB.PIX013677023ca1-f15f-47a0-b46b-c9b410e5b278520400005303986540517.995802BR5925Yuri Donizete Claudino de6009SAO PAULO62140510iV8lYlcvXl63044D3E</code>
             <button type="button" id="copy-pix" class="btn small">Copiar PIX</button>
+          </div>
+          <div class="checkbox-wrapper payment-confirm">
+            <label for="payment-confirmed">
+              <input id="payment-confirmed" name="payment-confirmed" type="checkbox" />
+              Confirmo que realizei o pagamento via PIX
+            </label>
           </div>
         </div>
 
-        <button type="submit" class="btn">Confirmar presença</button>
+        <button type="submit" class="btn" id="submit-btn">Confirmar presença</button>
       </form>
 
       <div id="status-message" class="status-message hidden"></div>
@@ -76,7 +82,7 @@
         <li><strong>Local:</strong> Condomínio Solar dos Engenheiros (Salão de Festas)</li>
         <li><strong>Data:</strong> 5 de novembro (quarta que vem!)</li>
         <li><strong>Horário:</strong> 20h30 → 22h00</li>
-        <li><strong>Valor:</strong> R$ 16,99 (só se quiser comer salgado!)</li>
+        <li><strong>Valor:</strong> R$ 17,99 (só se quiser comer salgado!)</li>
         <li><strong>Dress Code:</strong> Corrida (opcional, mas recomendado)</li>
       </ul>
     </aside>

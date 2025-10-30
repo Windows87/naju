@@ -3,6 +3,8 @@
   const form = document.getElementById('registration');
   const foodCheckbox = document.getElementById('food');
   const paymentBlock = document.getElementById('payment-block');
+  const paymentConfirmed = document.getElementById('payment-confirmed');
+  const submitBtn = document.getElementById('submit-btn');
   const copyPixBtn = document.getElementById('copy-pix');
   const modal = document.getElementById('modal');
   const modalBody = document.getElementById('modal-body');
@@ -88,7 +90,7 @@
       });
 
       // Com no-cors, não conseguimos ler a resposta, mas se não deu erro, assumimos sucesso
-      const price = food ? 16.99 : 0;
+      const price = food ? 17.99 : 0;
       const body = `<p>Inscrição confirmada para <strong>${escapeHtml(name)}</strong>!</p>`+
                    (food ? `<p>Valor: <strong>R$ ${price.toFixed(2)}</strong></p><p class="muted small">Aguarde pelo seu salgado!</p>` : '')+
                    `<p class="muted small">Valeu! ;)</p>`;
@@ -133,7 +135,30 @@
         paymentBlock.classList.remove('hidden');
       } else {
         paymentBlock.classList.add('hidden');
+        // Se desmarcou o salgado, desmarcar também a confirmação de pagamento
+        if(paymentConfirmed) paymentConfirmed.checked = false;
       }
+    }
+    updateSubmitButton();
+  }
+
+  // Controlar se o botão de envio está habilitado
+  function updateSubmitButton(){
+    if(!submitBtn) return;
+    
+    // Se salgado foi selecionado, só habilitar se pagamento foi confirmado
+    if(foodCheckbox && foodCheckbox.checked){
+      if(paymentConfirmed && paymentConfirmed.checked){
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('disabled');
+      } else {
+        submitBtn.disabled = true;
+        submitBtn.classList.add('disabled');
+      }
+    } else {
+      // Se não selecionou salgado, botão sempre habilitado
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('disabled');
     }
   }
 
@@ -142,12 +167,19 @@
     updatePaymentUI();
   }
 
+  if(paymentConfirmed){
+    paymentConfirmed.addEventListener('change', updateSubmitButton);
+  }
+
+  // Inicializar estado do botão
+  updateSubmitButton();
+
   if(copyPixBtn){
     copyPixBtn.addEventListener('click', function(){
       const pix = document.getElementById('pix-payload').textContent;
       if(navigator.clipboard && navigator.clipboard.writeText){
         navigator.clipboard.writeText(pix).then(()=>{
-          openModal('PIX copiado', '<p>Payload PIX copiado para a área de transferência. Cole no app do seu banco para pagar.</p>');
+          openModal('PIX copiado', '<p>Código PIX copiado para a área de transferência. Cole no app do seu banco para pagar.</p>');
         }).catch(()=>{
           openModal('Erro', '<p>Não foi possível copiar automaticamente. Selecione e copie manualmente o código PIX.</p>');
         });
